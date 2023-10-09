@@ -171,8 +171,6 @@ function makeundisable(type){
         bu[i].disabled = false;
     }
     bu[2].checked=true;
-    if (type=='ron')
-        bu[0].disabled = true;
 }
 function yakumancnt(type, how){
     var yakuman=document.getElementsByName('fan_'+type)[9];
@@ -270,8 +268,8 @@ function save(){
         if (Number(document.querySelector(scores[i]).innerText)!==parseInt(document.querySelector(tmp).value))
             chkscore=1;
     }
-    if (cntscore!=1000){
-        document.querySelector('#Modal_alertText').innerText='점수 총합이 10만점이 아닙니다.';
+    if (cntscore % 1000 !== 0){
+        document.querySelector('#Modal_alertText').innerText='점수 총합이 맞지 않습니다.';
         document.querySelector('#Modal_alert').style.display='inline';
         return;
     }
@@ -844,7 +842,7 @@ function copyrecord(){
     for (var i=0;i<4;i++){
         copytxt+=document.querySelector(names[i]).innerText+'\t';
     }
-    copytxt+='\n\t25000\t25000\t25000\t25000\t\n';
+    copytxt+='\n\t100000\t100000\t100000\t100000\t\n';
     var arrw=document.querySelector("#when").innerHTML.split('<div');
     for (var i=2;i<arrw.length;i++){
         copytxt+=(`<div`+arrw[i]).replace(/<[^>]*>?/g, '')+'\t';
